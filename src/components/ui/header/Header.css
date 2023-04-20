@@ -1,0 +1,47 @@
+.page-header_content {
+  display: flex;
+  flex: 1;
+  justify-content: space-between;
+}
+
+.header-navigation_list {
+  list-style-type: none;
+  display: flex;
+  column-gap: 15px;
+}
+
+.header-navigation_list-item {
+  padding: 10px 0;
+  position: relative;
+  cursor: pointer;
+}
+
+.header-navigation_list-item:hover .header-navigation_sublist {
+  display: flex;
+}
+
+.header-navigation_sublist {
+  background-color: white;
+  position: absolute;
+  top: 35px;
+  left: 0;
+  display: none;
+  flex-direction: column;
+}
+
+.header-navigation_sublist-item {
+  padding: 10px 15px;
+  border: 1px solid grey;
+  min-width: 200px;
+  text-align: center;
+}
+
+.header-navigation_sublist-item:hover {
+  cursor: pointer;
+  background: lightgray;
+}
+
+.header-app_info {
+  display: flex;
+  padding: 10px 0;
+}
