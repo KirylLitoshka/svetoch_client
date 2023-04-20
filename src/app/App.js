@@ -1,11 +1,12 @@
 import "./App.css";
+import PageWrapper from "../components/wrappers/page/PageWrapper";
 
-function App() {
+const App = () => {
   return (
-    <div className="App">
-      App
-    </div>
+    <PageWrapper>
+      
+    </PageWrapper>
   );
-}
+};
 
 export default App;
