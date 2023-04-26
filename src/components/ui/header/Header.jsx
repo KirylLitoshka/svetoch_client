@@ -1,6 +1,6 @@
 import React from "react";
 import { Link } from "react-router-dom";
-import "./Header.css"
+import "./Header.css";
 
 const Header = () => {
   return (
@@ -17,16 +17,43 @@ const Header = () => {
                 </div>
               </li>
               <li className="header-navigation_list-item">
-                <div className="header-navigation_list-button">Content 3</div>
+                <div className="header-navigation_list-button">Справочники</div>
                 <div className="header-navigation_sublist">
-                  <Link to="/" className="header-navigation_sublist-item">
-                    Sublist 3
+                  <Link
+                    to="catalogues/rates"
+                    className="header-navigation_sublist-item"
+                  >
+                    Тарифы
+                  </Link>
+                  <Link
+                    to="catalogues/ciphers"
+                    className="header-navigation_sublist-item"
+                  >
+                    Шифры
+                  </Link>
+                  <Link
+                    to="catalogues/meters"
+                    className="header-navigation_sublist-item"
+                  >
+                    Марки счетчиков
                   </Link>
                   <Link to="/" className="header-navigation_sublist-item">
-                    Sublist 3
+                    Расчетные данные
                   </Link>
                   <Link to="/" className="header-navigation_sublist-item">
-                    Sublist 3
+                    Дачи "Мигован"
+                  </Link>
+                  <Link to="/" className="header-navigation_sublist-item">
+                    Участки
+                  </Link>
+                  <Link to="/" className="header-navigation_sublist-item">
+                    Цеха
+                  </Link>
+                  <Link to="/" className="header-navigation_sublist-item">
+                    Улицы
+                  </Link>
+                  <Link to="/" className="header-navigation_sublist-item">
+                    Можность
                   </Link>
                 </div>
               </li>
