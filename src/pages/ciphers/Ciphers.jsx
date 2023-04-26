@@ -21,7 +21,13 @@ const Ciphers = () => {
   const getCiphers = async () => {
     axios
       .get("/api/v1/electricity/ciphers")
-      .then((r) => setCiphers(r.data))
+      .then((r) => {
+        if (r.data.status === "success") {
+          setCiphers(r.data.items);
+        } else {
+          setError(r.data.reason);
+        }
+      })
       .catch((e) => setError(e.response.data.reason))
       .then(() => setLoading(false));
   };
@@ -65,7 +71,8 @@ const Ciphers = () => {
               <ControlButton
                 type="link"
                 label="Изменить"
-                linkState={{ id: cipher.id }}
+                linkURL="edit"
+                linkState={{ item: cipher }}
               />
               <ControlButton
                 label={"Удалить"}
