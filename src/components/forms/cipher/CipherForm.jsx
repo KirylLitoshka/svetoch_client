@@ -113,7 +113,7 @@ const CiphersForm = () => {
           </option>
           {rates.map((rate) => (
             <option key={rate.id} value={rate.id}>
-              {rate.title}
+              {rate.title} ({rate.value})
             </option>
           ))}
         </select>
