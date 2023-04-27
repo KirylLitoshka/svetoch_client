@@ -7,6 +7,8 @@ import Rates from "../../pages/rates/Rates";
 import RateForm from "../../components/forms/rates/RateForm";
 import Meters from "../../pages/meters/Meters";
 import MetersForm from "../../components/forms/meters/MetersForm";
+import Areas from "../../pages/areas/Areas";
+import AreasForm from "../../components/forms/areas/AreasForm";
 
 const MainRouter = () => {
   return (
@@ -21,6 +23,9 @@ const MainRouter = () => {
       <Route path="/catalogues/meters" element={<Meters />} />
       <Route path="/catalogues/meters/add" element={<MetersForm />} />
       <Route path="/catalogues/meters/edit" element={<MetersForm />} />
+      <Route path="/catalogues/areas" element={<Areas />} />
+      <Route path="/catalogues/areas/add" element={<AreasForm />} />
+      <Route path="/catalogues/areas/edit" element={<AreasForm />} />
     </Routes>
   );
 };
