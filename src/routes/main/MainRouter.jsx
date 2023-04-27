@@ -9,6 +9,8 @@ import Meters from "../../pages/meters/Meters";
 import MetersForm from "../../components/forms/meters/MetersForm";
 import Areas from "../../pages/areas/Areas";
 import AreasForm from "../../components/forms/areas/AreasForm";
+import Workshops from "../../pages/workshops/Workshops";
+import WorkshopsForm from "../../components/forms/workshops/WorkshopsForm";
 
 const MainRouter = () => {
   return (
@@ -26,6 +28,9 @@ const MainRouter = () => {
       <Route path="/catalogues/areas" element={<Areas />} />
       <Route path="/catalogues/areas/add" element={<AreasForm />} />
       <Route path="/catalogues/areas/edit" element={<AreasForm />} />
+      <Route path="/catalogues/workshops" element={<Workshops />} />
+      <Route path="/catalogues/workshops/add" element={<WorkshopsForm />} />
+      <Route path="/catalogues/workshops/edit" element={<WorkshopsForm />} />
     </Routes>
   );
 };

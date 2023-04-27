@@ -43,7 +43,7 @@ const Header = () => {
                   >
                     Участки
                   </Link>
-                  <Link to="/" className="header-navigation_sublist-item">
+                  <Link to="/catalogues/workshops" className="header-navigation_sublist-item">
                     Цеха
                   </Link>
                 </div>
