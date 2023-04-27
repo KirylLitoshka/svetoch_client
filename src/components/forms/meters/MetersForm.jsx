@@ -20,7 +20,6 @@ const MetersForm = () => {
     axios
       .post("/api/v1/electricity/meters", meter)
       .then((r) => {
-        console.log(r);
         if (r.data.status === "success") {
           navigate("/catalogues/meters");
         } else {
