@@ -32,7 +32,7 @@ const Header = () => {
                     Шифры
                   </Link>
                   <Link
-                    to="/"
+                    to="/catalogues/meters"
                     className="header-navigation_sublist-item"
                   >
                     Марки счетчиков
