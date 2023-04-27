@@ -37,23 +37,14 @@ const Header = () => {
                   >
                     Марки счетчиков
                   </Link>
-                  <Link to="/" className="header-navigation_sublist-item">
-                    Расчетные данные
-                  </Link>
-                  <Link to="/" className="header-navigation_sublist-item">
-                    Дачи "Мигован"
-                  </Link>
-                  <Link to="/" className="header-navigation_sublist-item">
+                  <Link
+                    to="/catalogues/areas"
+                    className="header-navigation_sublist-item"
+                  >
                     Участки
                   </Link>
                   <Link to="/" className="header-navigation_sublist-item">
                     Цеха
-                  </Link>
-                  <Link to="/" className="header-navigation_sublist-item">
-                    Улицы
-                  </Link>
-                  <Link to="/" className="header-navigation_sublist-item">
-                    Можность
                   </Link>
                 </div>
               </li>
