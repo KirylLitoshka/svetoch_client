@@ -11,7 +11,7 @@ const RateForm = () => {
   const [error, setError] = useState("");
 
   useEffect(() => {
-    if (location.state.item) {
+    if (location.state?.item) {
       setRate({ id: location.state.item.id, title: location.state.item.title });
     }
   }, []);
