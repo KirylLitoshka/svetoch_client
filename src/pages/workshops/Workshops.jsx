@@ -22,7 +22,7 @@ const Workshops = () => {
     axios
       .get("/api/v1/electricity/workshops")
       .then((r) => {
-        if (r.data.status === "success") {
+        if (r.data.success) {
           setWorkshops(r.data.items);
         } else {
           setError(r.data.reason);
@@ -36,7 +36,7 @@ const Workshops = () => {
     axios
       .delete(`/api/v1/electricity/workshops/${selectedID}`)
       .then((r) => {
-        if (r.data.status === "success") {
+        if (r.data.success) {
           setWorkshops(workshops.filter((workshop) => workshop.id !== selectedID));
         } else {
           setError(r.data.reason);

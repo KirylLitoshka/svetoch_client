@@ -8,6 +8,7 @@ import FormWrapper from "../../wrappers/form/FormWrapper";
 const WorkshopsForm = () => {
   const navigate = useNavigate();
   const location = useLocation();
+  const stateItem = location.state?.item
   const [workshop, setWorkshop] = useState({ title: "" });
   const [error, setError] = useState("");
 
@@ -15,7 +16,7 @@ const WorkshopsForm = () => {
     await axios
       .post("/api/v1/electricity/workshops", workshop)
       .then((r) => {
-        if (r.data.status === "success") {
+        if (r.data.success) {
           navigate("/catalogues/workshops");
         } else {
           setError(r.data.reason);
@@ -28,7 +29,7 @@ const WorkshopsForm = () => {
     await axios
       .patch(`/api/v1/electricity/workshops/${workshop.id}`, workshop)
       .then((r) => {
-        if (r.data.status === "success") {
+        if (r.data.success) {
           navigate("/catalogues/workshops");
         } else {
           setError(r.data.reason);
@@ -38,10 +39,10 @@ const WorkshopsForm = () => {
   };
 
   useEffect(() => {
-    if (location.state?.item) {
-      setWorkshop(location.state.item);
+    if (stateItem) {
+      setWorkshop({...stateItem});
     }
-  }, []);
+  }, [stateItem]);
 
   if (error) {
     return <Error message={error} />;

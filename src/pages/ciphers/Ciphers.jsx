@@ -22,7 +22,7 @@ const Ciphers = () => {
     axios
       .get("/api/v1/electricity/ciphers")
       .then((r) => {
-        if (r.data.status === "success") {
+        if (r.data.success) {
           setCiphers(r.data.items);
         } else {
           setError(r.data.reason);
@@ -36,7 +36,7 @@ const Ciphers = () => {
     axios
       .delete(`/api/v1/electricity/ciphers/${selectedID}`)
       .then((r) => {
-        if (r.data.status === "success") {
+        if (r.data.success) {
           setCiphers(ciphers.filter((cipher) => cipher.id !== selectedID));
         } else {
           setError(r.data.reason);

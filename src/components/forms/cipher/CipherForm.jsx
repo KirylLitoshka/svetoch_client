@@ -7,7 +7,7 @@ import Loader from "../../ui/loader/Loader";
 
 const CiphersForm = () => {
   const location = useLocation();
-  const stateItem = location.state.item;
+  const stateItem = location.state?.item;
   const navigate = useNavigate();
   const [cipher, setCipher] = useState({ title: "", code: "", rate_id: null });
   const [rates, setRates] = useState([]);
@@ -18,7 +18,7 @@ const CiphersForm = () => {
     await axios
       .get("/api/v1/electricity/rates")
       .then((r) => {
-        if (r.data.status === "success") {
+        if (r.data.success) {
           setRates(r.data.items);
         } else {
           setError(r.data.reason)
@@ -32,8 +32,7 @@ const CiphersForm = () => {
     await axios
       .post("/api/v1/electricity/ciphers", cipher)
       .then((r) => {
-        console.log(r);
-        if (r.data.status === "success") {
+        if (r.data.success) {
           navigate("/catalogues/ciphers");
         } else {
           setError(r.data.reason);
@@ -46,7 +45,7 @@ const CiphersForm = () => {
     await axios
       .patch(`/api/v1/electricity/ciphers/${cipher.id}`, cipher)
       .then((r) => {
-        if (r.data.status === "success") {
+        if (r.data.success) {
           navigate("/catalogues/ciphers");
         } else {
           setError(r.data.reason);
@@ -60,7 +59,7 @@ const CiphersForm = () => {
       setCipher({ ...stateItem });
     }
     getRates();
-  }, []);
+  }, [stateItem]);
 
   if (isLoading) {
     return <Loader />;

@@ -22,7 +22,7 @@ const Areas = () => {
     axios
       .get("/api/v1/electricity/areas")
       .then((r) => {
-        if (r.data.status === "success") {
+        if (r.data.success) {
           setAreas(r.data.items);
         } else {
           setError(r.data.reason);
@@ -36,7 +36,7 @@ const Areas = () => {
     axios
       .delete(`/api/v1/electricity/areas/${selectedID}`)
       .then((r) => {
-        if (r.data.status === "success") {
+        if (r.data.success) {
           setAreas(areas.filter((area) => area.id !== selectedID));
         } else {
           setError(r.data.reason);

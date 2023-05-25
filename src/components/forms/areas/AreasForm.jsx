@@ -8,6 +8,7 @@ import FormWrapper from "../../wrappers/form/FormWrapper";
 const AreasForm = () => {
   const navigate = useNavigate();
   const location = useLocation();
+  const stateItem = location.state?.item
   const [area, setArea] = useState({ title: "" });
   const [error, setError] = useState("");
 
@@ -15,7 +16,7 @@ const AreasForm = () => {
     axios
       .post("/api/v1/electricity/areas", area)
       .then((r) => {
-        if (r.data.status === "success") {
+        if (r.data.success) {
           navigate("/catalogues/areas");
         } else {
           setError(r.data.reason);
@@ -28,7 +29,7 @@ const AreasForm = () => {
     axios
       .patch(`/api/v1/electricity/areas/${area.id}`, area)
       .then((r) => {
-        if (r.data.status === "success") {
+        if (r.data.success) {
           navigate("/catalogues/areas");
         } else {
           setError(r.data.reason);
@@ -38,10 +39,10 @@ const AreasForm = () => {
   };
 
   useEffect(() => {
-    if (location.state?.item) {
-      setArea(location.state.item);
+    if (stateItem) {
+      setArea({...stateItem});
     }
-  }, []);
+  }, [stateItem]);
 
   if (error) {
     return <Error message={error} />;

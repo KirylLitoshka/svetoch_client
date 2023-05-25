@@ -5,22 +5,23 @@ import axios from "axios";
 import Error from "../../ui/error/Error";
 
 const MetersForm = () => {
-  const location = useLocation();
   const navigate = useNavigate();
+  const location = useLocation();
+  const stateItem = location.state?.item
   const [meter, setMeter] = useState({ title: "", capacity: 0 });
   const [error, setError] = useState("");
 
   useEffect(() => {
-    if (location.state?.item) {
-      setMeter(location.state.item);
+    if (stateItem) {
+      setMeter({...stateItem});
     }
-  }, []);
+  }, [stateItem]);
 
   const postMeter = async () => {
     axios
       .post("/api/v1/electricity/meters", meter)
       .then((r) => {
-        if (r.data.status === "success") {
+        if (r.data.success) {
           navigate("/catalogues/meters");
         } else {
           setError(r.data.reason);
@@ -33,7 +34,7 @@ const MetersForm = () => {
     axios
       .patch(`/api/v1/electricity/meters/${meter.id}`, meter)
       .then((r) => {
-        if (r.data.status === "success") {
+        if (r.data.success) {
           navigate("/catalogues/meters");
         } else {
           setError(r.data.reason);

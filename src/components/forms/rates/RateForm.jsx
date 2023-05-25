@@ -5,22 +5,23 @@ import Error from "../../ui/error/Error";
 import FormWrapper from "../../wrappers/form/FormWrapper";
 
 const RateForm = () => {
-  const location = useLocation();
   const navigate = useNavigate();
+  const location = useLocation();
+  const stateItem = location.state?.item
   const [rate, setRate] = useState({ title: "" });
   const [error, setError] = useState("");
 
   useEffect(() => {
-    if (location.state?.item) {
-      setRate({ id: location.state.item.id, title: location.state.item.title });
+    if (stateItem) {
+      setRate({ id: stateItem.id, title: stateItem.title });
     }
-  }, []);
+  }, [stateItem]);
 
   const postRate = async () => {
     await axios
       .post(`/api/v1/electricity/rates`, rate)
       .then((r) => {
-        if (r.data.status === "success") {
+        if (r.data.success) {
           navigate("/catalogues/rates");
         } else {
           setError(r.data.reason);
@@ -33,7 +34,7 @@ const RateForm = () => {
     await axios
       .patch(`/api/v1/electricity/rates/${rate.id}`, rate)
       .then((r) => {
-        if (r.data.status === "success") {
+        if (r.data.success) {
           navigate("/catalogues/rates");
         } else {
           setError(r.data.reason);

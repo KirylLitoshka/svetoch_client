@@ -26,7 +26,7 @@ const Meters = () => {
     axios
       .get("/api/v1/electricity/meters")
       .then((r) => {
-        if (r.data.status === "success") {
+        if (r.data.success) {
           setMeters(r.data.items);
         } else {
           setError(r.data.reason);
@@ -40,8 +40,10 @@ const Meters = () => {
     axios
       .delete(`/api/v1/electricity/meters/${selectedItem.id}`)
       .then((r) => {
-        if (r.data.status === "success") {
+        if (r.data.success) {
           setMeters(meters.filter((meter) => meter.id !== selectedItem.id));
+        } else {
+          setError(r.data.reason)
         }
       })
       .catch((e) => setError(e.response.data.reason))

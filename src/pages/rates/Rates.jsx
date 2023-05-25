@@ -23,7 +23,7 @@ const Rates = () => {
     axios
       .get("/api/v1/electricity/rates")
       .then((r) => {
-        if (r.data.status === "success") {
+        if (r.data.success) {
           setRates(r.data.items);
         } else {
           setError(r.data.reason);
@@ -37,7 +37,7 @@ const Rates = () => {
     axios
       .delete(`/api/v1/electricity/rates/${selectedID}`)
       .then((r) => {
-        if (r.data.status === "success") {
+        if (r.data.success) {
           setRates(rates.filter((rate) => rate.id !== selectedID));
         } else {
           setError(r.data.reason);
