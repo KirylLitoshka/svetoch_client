@@ -11,11 +11,16 @@ import Areas from "../../pages/areas/Areas";
 import AreasForm from "../../components/forms/areas/AreasForm";
 import Workshops from "../../pages/workshops/Workshops";
 import WorkshopsForm from "../../components/forms/workshops/WorkshopsForm";
+import Objects from "../../pages/objects/Objects";
+import ObjectForm from "../../components/forms/objects/ObjectForm";
 
 const MainRouter = () => {
   return (
     <Routes>
       <Route path="/" element={<Home />} />
+      <Route path="/objects" element={<Objects/>}/>
+      <Route path="/objects/add" element={<ObjectForm/>}/>
+      <Route path="/objects/edit" element={<ObjectForm/>}/>
       <Route path="/catalogues/ciphers" element={<Ciphers />} />
       <Route path="/catalogues/ciphers/add" element={<CiphersForm />} />
       <Route path="/catalogues/ciphers/edit" element={<CiphersForm />} />
