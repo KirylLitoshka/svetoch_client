@@ -13,14 +13,18 @@ import Workshops from "../../pages/workshops/Workshops";
 import WorkshopsForm from "../../components/forms/workshops/WorkshopsForm";
 import Objects from "../../pages/objects/Objects";
 import ObjectForm from "../../components/forms/objects/ObjectForm";
+import SubObjects from "../../pages/subobjects/SubObjects";
+import Limits from "../../pages/limits/Limits";
+import SubObjectsForm from "../../components/forms/subobjects/SubObjectsForm";
+import LimitForm from "../../components/forms/limits/LimitForm";
 
 const MainRouter = () => {
   return (
     <Routes>
       <Route path="/" element={<Home />} />
-      <Route path="/objects" element={<Objects/>}/>
-      <Route path="/objects/add" element={<ObjectForm/>}/>
-      <Route path="/objects/edit" element={<ObjectForm/>}/>
+      <Route path="/objects" element={<Objects />} />
+      <Route path="/objects/add" element={<ObjectForm />} />
+      <Route path="/objects/edit" element={<ObjectForm />} />
       <Route path="/catalogues/ciphers" element={<Ciphers />} />
       <Route path="/catalogues/ciphers/add" element={<CiphersForm />} />
       <Route path="/catalogues/ciphers/edit" element={<CiphersForm />} />
@@ -36,6 +40,12 @@ const MainRouter = () => {
       <Route path="/catalogues/workshops" element={<Workshops />} />
       <Route path="/catalogues/workshops/add" element={<WorkshopsForm />} />
       <Route path="/catalogues/workshops/edit" element={<WorkshopsForm />} />
+      <Route path="/subobjects" element={<SubObjects />} />
+      <Route path="/subobjects/add" element={<SubObjectsForm />} />
+      <Route path="/subobjects/edit" element={<SubObjectsForm />} />
+      <Route path="/limits" element={<Limits />} />
+      <Route path="/limits/add" element={<LimitForm />} />
+      <Route path="/limits/edit" element={<LimitForm />} />
     </Routes>
   );
 };
