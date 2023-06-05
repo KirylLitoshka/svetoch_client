@@ -10,13 +10,13 @@ const Home = () => {
                     <Link to="/objects" className="home-menu_item-link">Объекты</Link>
                 </div>
                 <div className="home-menu_item">
-                    <Link to="/" className="home-menu_item-link">Подобъекты</Link>
+                    <Link to="/subobjects" className="home-menu_item-link">Подобъекты</Link>
                 </div>
                 <div className="home-menu_item">
                     <Link to="/" className="home-menu_item-link">Арендаторы</Link>
                 </div>
                 <div className="home-menu_item">
-                    <Link to="/" className="home-menu_item-link">Предельные уровни</Link>
+                    <Link to="/limits" className="home-menu_item-link">Предельные уровни</Link>
                 </div>
             </div>
         </div>
