@@ -17,6 +17,8 @@ import SubObjects from "../../pages/subobjects/SubObjects";
 import Limits from "../../pages/limits/Limits";
 import SubObjectsForm from "../../components/forms/subobjects/SubObjectsForm";
 import LimitForm from "../../components/forms/limits/LimitForm";
+import Banks from "../../pages/banks/Banks";
+import BankForm from "../../components/forms/banks/BankForm";
 
 const MainRouter = () => {
   return (
@@ -40,6 +42,9 @@ const MainRouter = () => {
       <Route path="/catalogues/workshops" element={<Workshops />} />
       <Route path="/catalogues/workshops/add" element={<WorkshopsForm />} />
       <Route path="/catalogues/workshops/edit" element={<WorkshopsForm />} />
+      <Route path="/catalogues/banks" element={<Banks />} />
+      <Route path="/catalogues/banks/add" element={<BankForm/>} />
+      <Route path="/catalogues/banks/edit" element={<BankForm/>} />
       <Route path="/subobjects" element={<SubObjects />} />
       <Route path="/subobjects/add" element={<SubObjectsForm />} />
       <Route path="/subobjects/edit" element={<SubObjectsForm />} />
