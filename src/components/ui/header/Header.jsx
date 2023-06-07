@@ -15,6 +15,23 @@ const Header = () => {
                     Главная
                   </Link>
                 </div>
+                <div className="header-navigation_sublist">
+                  <Link to="objects" className="header-navigation_sublist-item">
+                    Объекты
+                  </Link>
+                  <Link
+                    to="subobjects"
+                    className="header-navigation_sublist-item"
+                  >
+                    Подобъекты
+                  </Link>
+                  <Link to="renters" className="header-navigation_sublist-item">
+                    Арендаторы
+                  </Link>
+                  <Link to="limits" className="header-navigation_sublist-item">
+                    Предельные уровни
+                  </Link>
+                </div>
               </li>
               <li className="header-navigation_list-item">
                 <div className="header-navigation_list-button">Справочники</div>
@@ -43,8 +60,17 @@ const Header = () => {
                   >
                     Участки
                   </Link>
-                  <Link to="/catalogues/workshops" className="header-navigation_sublist-item">
+                  <Link
+                    to="/catalogues/workshops"
+                    className="header-navigation_sublist-item"
+                  >
                     Цеха
+                  </Link>
+                  <Link
+                    to="/catalogues/banks"
+                    className="header-navigation_sublist-item"
+                  >
+                    Банки
                   </Link>
                 </div>
               </li>
