@@ -13,6 +13,7 @@ import ModalWrapper from "../../components/wrappers/modal/ModalWrapper";
 import axios from "axios";
 import { Link } from "react-router-dom";
 import { useObjects } from "../../hooks/useObjects";
+import { showContent } from "../../utils/accordion";
 
 const Objects = () => {
   const [loading, setLoading] = useState(true);
@@ -68,17 +69,6 @@ const Objects = () => {
 
   const handlePageClick = ({ selected: selectedPage }) => {
     setCurrentPage(selectedPage);
-  };
-
-  const showContent = (e) => {
-    e.target.classList.toggle("accordion-list_item__button_active");
-
-    let content = e.target.nextElementSibling;
-    if (content.style.maxHeight) {
-      content.style.maxHeight = null;
-    } else {
-      content.style.maxHeight = content.scrollHeight + "px";
-    }
   };
 
   if (loading) {
