@@ -16,7 +16,6 @@ export const useFilterByMeter = (objects, searchQuery) => {
     if (searchQuery.meterNumber) {
       return [...filteredObjects].filter((obj) => {
         if (obj.meter?.number) {
-          console.log(obj)
           return obj.meter.number.includes(searchQuery.meterNumber)
         }
         return false
