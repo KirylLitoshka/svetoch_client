@@ -267,6 +267,7 @@ const ObjectForm = () => {
             id="closed"
             type="checkbox"
             className="form__input"
+            checked={objectItem.is_closed}
             onChange={() =>
               setObjectItem({ ...objectItem, is_closed: !objectItem.is_closed })
             }
