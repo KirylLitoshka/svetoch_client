@@ -13,7 +13,7 @@ const Home = () => {
                     <Link to="/subobjects" className="home-menu_item-link">Подобъекты</Link>
                 </div>
                 <div className="home-menu_item">
-                    <Link to="/" className="home-menu_item-link">Арендаторы</Link>
+                    <Link to="/renters" className="home-menu_item-link">Арендаторы</Link>
                 </div>
                 <div className="home-menu_item">
                     <Link to="/limits" className="home-menu_item-link">Предельные уровни</Link>
