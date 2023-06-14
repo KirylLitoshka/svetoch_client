@@ -14,6 +14,7 @@ import axios from "axios";
 import { Link } from "react-router-dom";
 import { useObjects } from "../../hooks/useObjects";
 import { showContent } from "../../utils/accordion";
+import ObjectLimitsForm from "../../components/forms/objects/ObjectLimitsForm";
 
 const Objects = () => {
   const [loading, setLoading] = useState(true);
@@ -21,6 +22,7 @@ const Objects = () => {
   const [objects, setObjects] = useState([]);
   const [currentPage, setCurrentPage] = useState(0);
   const [modalVisible, setModalVisible] = useState(false);
+  const [limitsModalVisible, setLimitsModalVisible] = useState(false);
   const [selectedID, setSelectedID] = useState(null);
   const [searchQuery, setSearchQuery] = useState({
     title: "",
@@ -69,6 +71,11 @@ const Objects = () => {
 
   const handlePageClick = ({ selected: selectedPage }) => {
     setCurrentPage(selectedPage);
+  };
+
+  const closeModal = (visible = false) => {
+    setSelectedID(null);
+    setLimitsModalVisible(visible);
   };
 
   if (loading) {
@@ -175,9 +182,11 @@ const Objects = () => {
                 />
                 <ControlButton
                   label="Предельные уровни"
-                  type="link"
-                  linkURL="limits"
-                  linkState={{ id: item.id }}
+                  type="button"
+                  callback={() => {
+                    setSelectedID(item.id);
+                    setLimitsModalVisible(true);
+                  }}
                 />
                 <ControlButton
                   label="Изменить"
@@ -204,6 +213,12 @@ const Objects = () => {
           onConfirmAction={deleteObject}
           onCloseAction={setModalVisible}
         />
+      </ModalWrapper>
+      <ModalWrapper
+        isVisible={limitsModalVisible}
+        setIsVisible={closeModal}
+      >
+        <ObjectLimitsForm objectID={selectedID} onCloseAction={closeModal} />
       </ModalWrapper>
     </React.Fragment>
   );
