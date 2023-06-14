@@ -5,6 +5,19 @@
   justify-content: center;
 }
 
+.form-wrapper__bordered {
+  border: 1px solid grey;
+  border-radius: 5px;
+}
+
+.form-wrapper__bordered:not(:last-child) {
+  margin-bottom: 10px;
+}
+
+.form-wrapper__bordered .form {
+  padding: 5px 10px;
+}
+
 .form {
   min-width: 450px;
   padding: 20px 10px;
