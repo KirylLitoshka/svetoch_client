@@ -345,7 +345,7 @@ const ObjectForm = () => {
       </div>
       <div className="form__row">
         <label htmlFor="ee" className="form__label">
-          EE (хз что это)
+          Vn
         </label>
         <input
           type="text"
