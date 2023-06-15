@@ -13,12 +13,15 @@ import ControlButton from "../../components/ui/buttons/controls/ControlButton";
 import ModalWrapper from "../../components/wrappers/modal/ModalWrapper";
 import Confirm from "../../components/ui/modals/confirm/Confirm";
 import { useRenters } from "../../hooks/useRenters";
+import ObjectsList from "../objects/ObjectsList";
 
 const Renters = () => {
   const [renters, setRenters] = useState([]);
   const [loading, setLoading] = useState(true);
   const [error, setError] = useState("");
   const [selectedItem, setSelectedItem] = useState(null);
+  const [selectedRenterID, setSelectedRenterID] = useState(null)
+  const [objectsModalVisible, setObjectsModalVisible] = useState(false)
   const [modalVisible, setModalVisible] = useState(false);
   const [searchQuery, setSearchQuery] = useState({
     name: "",
@@ -141,6 +144,14 @@ const Renters = () => {
               <CatalogueControl>
                 <ControlButton
                   type={"button"}
+                  label={"Точки арендатора"}
+                  callback={() => {
+                    setSelectedRenterID(renter.id)
+                    setObjectsModalVisible(true)
+                  }}
+                />
+                <ControlButton
+                  type={"button"}
                   callback={() => {
                     setSelectedItem(renter);
                     setModalVisible(true);
@@ -163,6 +174,9 @@ const Renters = () => {
           onCloseAction={setModalVisible}
           onConfirmAction={deleteRenter}
         />
+      </ModalWrapper>
+      <ModalWrapper isVisible={objectsModalVisible} setIsVisible={setObjectsModalVisible}>
+        <ObjectsList closeAction={setObjectsModalVisible} field={"renter"} id={selectedRenterID} />
       </ModalWrapper>
     </React.Fragment>
   );
