@@ -10,7 +10,7 @@ const ObjectLimitsForm = ({ objectID, onCloseAction }) => {
   const [limits, setLimits] = useState([]);
   const [renters, setRenters] = useState([]);
   const [subObjects, setSubObjects] = useState([]);
-  const [loading, setLoading] = useState(false);
+  const [loading, setLoading] = useState(true);
   const [error, setError] = useState("");
 
   const deleteObjectLimit = async (i) => {
