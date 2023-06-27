@@ -14,7 +14,12 @@ const ObjectsList = ({ field, id, closeAction }) => {
 
   useEffect(() => {
     const getObjects = async () => {
-      const params = field === "renter" ? { renter: id } : { subobject: id };
+      const params =
+        field === "renter"
+          ? { renter: id }
+          : field == "subobject"
+          ? { subobject: id }
+          : { limit: id };
       axios
         .get(`/api/v1/electricity/objects`, { params })
         .then((r) => {
@@ -52,7 +57,7 @@ const ObjectsList = ({ field, id, closeAction }) => {
       }}
     >
       <div>
-        <CloseButton closeAction={closeAction}/>
+        <CloseButton closeAction={closeAction} />
         <Accordion>
           {objects.map((obj) => (
             <div className="accordion-list_item" key={obj.id}>
