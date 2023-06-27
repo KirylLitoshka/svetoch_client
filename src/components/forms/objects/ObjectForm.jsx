@@ -6,6 +6,11 @@ import { isObjectsEqual } from "../../../utils/compares";
 import Loader from "../../ui/loader/Loader";
 import Error from "../../ui/error/Error";
 import FormWrapper from "../../wrappers/form/FormWrapper";
+import {
+  addressToString,
+  compareAddress,
+  defaultAddressValue,
+} from "../../../utils/addresses";
 
 const ObjectForm = () => {
   const location = useLocation();
@@ -25,17 +30,21 @@ const ObjectForm = () => {
     title: "",
     cipher_id: null,
     area_id: null,
+    address_id: null,
     calculation_factor: 1,
     subscriber_type: 0,
     break_percentage: 0.0,
     is_closed: false,
     counting_point: null,
+    jeu_code: null,
+    house_number: null,
     ee: 0,
   });
 
   const [meters, setMeters] = useState([]);
   const [areas, setAreas] = useState([]);
   const [ciphers, setCiphers] = useState([]);
+  const [addresses, setAddresses] = useState([]);
 
   const postObjectItem = async () => {
     return await axios
@@ -150,6 +159,7 @@ const ObjectForm = () => {
         "/api/v1/electricity/areas",
         "/api/v1/electricity/ciphers",
         "/api/v1/electricity/meters",
+        "/api/v1/electricity/addresses",
       ];
 
       const requests = urls.map((url) => axios.get(url));
@@ -171,6 +181,7 @@ const ObjectForm = () => {
               setAreas(responses[0].data.items);
               setCiphers(responses[1].data.items);
               setMeters(responses[2].data.items);
+              setAddresses(responses[3].data.items);
             }
           })
         )
@@ -185,6 +196,17 @@ const ObjectForm = () => {
 
     Promise.all(promises).then(() => setLoading(false));
   }, [locationItemID]);
+
+  const setAddressID = (e) => {
+    const selectedAddress = addresses.filter((item) =>
+      compareAddress(item, e.target.value)
+    );
+    if (selectedAddress[0]) {
+      setObjectItem({ ...objectItem, address_id: selectedAddress[0].id });
+    } else {
+      setObjectItem({ ...objectItem, address_id: null });
+    }
+  };
 
   if (loading) {
     return <Loader />;
@@ -445,6 +467,57 @@ const ObjectForm = () => {
             setObjectMeter({
               ...objectMeter,
               installation_date: e.target.value || null,
+            })
+          }
+        />
+      </div>
+      <div className="form__row">
+        <label htmlFor="jeu_code" className="form__label">
+          Код ЖЭУ
+        </label>
+        <input
+          type="text"
+          className="form__input"
+          id="jeu_code"
+          value={objectItem.jeu_code || ""}
+          onChange={(e) =>
+            setObjectItem({ ...objectItem, jeu_code: e.target.value || null })
+          }
+        />
+      </div>
+      <div className="form__row">
+        <label htmlFor="addressLabel" className="form__label">
+          Адрес
+        </label>
+        <input
+          type="text"
+          id="addressLabel"
+          name="address"
+          list="address"
+          className="form__input"
+          autoComplete="false"
+          onChange={setAddressID}
+          defaultValue={
+            defaultAddressValue(addresses, objectItem.address_id) || ""
+          }
+        />
+        <datalist id="address">
+          {addresses.map((item) => (
+            <option key={item.id} value={addressToString(item)} />
+          ))}
+        </datalist>
+      </div>
+      <div className="form__row">
+        <label htmlFor="house_number" className="form__label">Номер дома</label>
+        <input
+          type="text"
+          id="house_number"
+          className="form__input"
+          value={objectItem.house_number || ""}
+          onChange={(e) =>
+            setObjectItem({
+              ...objectItem,
+              house_number: e.target.value || null,
             })
           }
         />
