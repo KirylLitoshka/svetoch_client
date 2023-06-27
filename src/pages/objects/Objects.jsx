@@ -14,6 +14,7 @@ import axios from "axios";
 import { Link } from "react-router-dom";
 import { useObjects } from "../../hooks/useObjects";
 import { showContent } from "../../utils/accordion";
+import { addressToString } from "../../utils/addresses";
 import ObjectLimitsForm from "../../components/forms/objects/ObjectLimitsForm";
 
 const Objects = () => {
@@ -171,6 +172,11 @@ const Objects = () => {
                     )}
                     <div>Номер счетчика: {item.meter.number}</div>
                   </React.Fragment>
+                )}
+                {item.address && (
+                  <div>
+                    Адрес: {addressToString(item.address)}, д. {item.house_number}
+                  </div>
                 )}
               </div>
               <CatalogueControl>
